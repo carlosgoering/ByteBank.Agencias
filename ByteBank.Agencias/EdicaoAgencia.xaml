@@ -1,0 +1,35 @@
+﻿<Window x:Class="ByteBank.Agencias.EdicaoAgencia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ByteBank.Agencias"
+        mc:Ignorable="d"
+        Title="EdicaoAgencia" Height="450" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="15,100,15,67">
+            <TextBlock FontWeight="Bold">Número</TextBlock>
+            <TextBox x:Name="textNumero" ></TextBox>
+            <TextBlock FontWeight="Bold">Nome</TextBlock>
+            <TextBox x:Name="textNome" ></TextBox>
+            <TextBlock FontWeight="Bold">Telefone</TextBlock>
+            <TextBox x:Name="textTelefone" ></TextBox>
+            <TextBlock FontWeight="Bold">Descrição</TextBlock>
+            <TextBox x:Name="textDescricao" ></TextBox>
+            <TextBlock FontWeight="Bold">Endereço</TextBlock>
+            <TextBox x:Name="textEndereco" TextWrapping="Wrap"></TextBox>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButtonCancelar" Grid.Column="0" Width="100" Margin="5">Cancelar</Button>
+            <Button x:Name="ButtonSalvar" Grid.Column="1" Width="100" Margin="5" >Salvar</Button>
+        </Grid>
+    </Grid>
+</Window>
