@@ -13,15 +13,15 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="15,100,15,67">
             <TextBlock FontWeight="Bold">Número</TextBlock>
-            <TextBox x:Name="textNumero" ></TextBox>
+            <local:ValidacaoTextBox x:Name="textNumero"></local:ValidacaoTextBox>
             <TextBlock FontWeight="Bold">Nome</TextBlock>
-            <TextBox x:Name="textNome" ></TextBox>
+            <local:ValidacaoTextBox x:Name="textNome" ></local:ValidacaoTextBox>
             <TextBlock FontWeight="Bold">Telefone</TextBlock>
-            <TextBox x:Name="textTelefone" ></TextBox>
+            <local:ValidacaoTextBox x:Name="textTelefone" ></local:ValidacaoTextBox>
             <TextBlock FontWeight="Bold">Descrição</TextBlock>
-            <TextBox x:Name="textDescricao" ></TextBox>
+            <local:ValidacaoTextBox x:Name="textDescricao" ></local:ValidacaoTextBox>
             <TextBlock FontWeight="Bold">Endereço</TextBlock>
-            <TextBox x:Name="textEndereco" TextWrapping="Wrap"></TextBox>
+            <local:ValidacaoTextBox x:Name="textEndereco" TextWrapping="Wrap"></local:ValidacaoTextBox>
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

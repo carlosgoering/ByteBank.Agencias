@@ -48,81 +48,23 @@ namespace ByteBank.Agencias
             ButtonSalvar.Click += salvarEventHandler;
             ButtonCancelar.Click += cancelarEventHandler;
 
-            textNome.TextChanged += TextNome_TextChanged;
-            textNumero.TextChanged += TextNumero_TextChanged;
-            textTelefone.TextChanged += TextTelefone_TextChanged;
-            textDescricao.TextChanged += TextDescricao_TextChanged;
-            textEndereco.TextChanged += TextEndereco_TextChanged;
+            textNome.Validacao += ValidarCampoNulo;
+            textNumero.Validacao += ValidarCampoNulo;
+            textNumero.Validacao += ValidarSomenteDigito;
+            textTelefone.Validacao += ValidarCampoNulo;
+            textDescricao.Validacao += ValidarCampoNulo;
+            textEndereco.Validacao += ValidarCampoNulo;
         }
-
-        private void TextEndereco_TextChanged(object sender, TextChangedEventArgs e)
+        private bool ValidarSomenteDigito(string texto)
         {
-            var textoEstaVazio = string.IsNullOrEmpty(textEndereco.Text);
-            if (textoEstaVazio)
-            {
-                textEndereco.Background = new SolidColorBrush(Colors.OrangeRed);
-            }
-            else
-            {
-                textEndereco.Background = new SolidColorBrush(Colors.White);
-            }
+            return texto.All(char.IsDigit);
         }
-
-        private void TextDescricao_TextChanged(object sender, TextChangedEventArgs e)
+        private bool ValidarCampoNulo(string texto)
         {
-            var textoEstaVazio = string.IsNullOrEmpty(textDescricao.Text);
-            if (textoEstaVazio)
-            {
-                textDescricao.Background = new SolidColorBrush(Colors.OrangeRed);
-            }
-            else
-            {
-                textDescricao.Background = new SolidColorBrush(Colors.White);
-            }
-        }
+            return !string.IsNullOrEmpty(texto);
 
-        private void TextTelefone_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textoEstaVazio = string.IsNullOrEmpty(textTelefone.Text);
-            if (textoEstaVazio)
-            {
-                textTelefone.Background = new SolidColorBrush(Colors.OrangeRed);
-            }
-            else
-            {
-                textTelefone.Background = new SolidColorBrush(Colors.White);
-            }
         }
-
-        private void TextNumero_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textoEstaVazio = string.IsNullOrEmpty(textNumero.Text);
-            if (textoEstaVazio)
-            {
-                textNumero.Background = new SolidColorBrush(Colors.OrangeRed);
-            }
-            else
-            {
-                textNumero.Background = new SolidColorBrush(Colors.White);
-            }
-        }
-
-        private void TextNome_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textoEstaVazio = string.IsNullOrEmpty(textNome.Text);
-            if(textoEstaVazio)
-            {
-                textNome.Background = new SolidColorBrush(Colors.OrangeRed);
-            }
-            else
-            {
-                textNome.Background = new SolidColorBrush(Colors.White);
-            }
-        }
-
         private void Fechar(object sender, EventArgs e) =>
             Close();
-
-
     }
 }
