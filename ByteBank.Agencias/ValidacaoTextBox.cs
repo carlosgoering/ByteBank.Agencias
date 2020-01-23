@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace ByteBank.Agencias
 {
-    public delegate bool ValidacaoEventHandler(string texto);
+    public delegate void ValidacaoEventHandler(object sender, ValidacaoEventArgs e);
     public class ValidacaoTextBox : TextBox
     {
         private ValidacaoEventHandler _validacao;
@@ -17,30 +17,29 @@ namespace ByteBank.Agencias
             add
             {
                 _validacao += value;
-                _validacao(Text);
+                OnValidacao();
             }
             remove
             {
                 _validacao -= value;
             }
         }
-        public ValidacaoTextBox()
+        protected override void OnTextChanged(TextChangedEventArgs e)
         {
-            TextChanged += validacaoTextBox_TextChanged;
-        }
-        public void validacaoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+            base.OnTextChanged(e);
             OnValidacao();
         }
-        private void OnValidacao()
+        protected virtual void OnValidacao()
         {
             if (_validacao != null)
             {
                 var listaValidacao =_validacao.GetInvocationList();
+                var eventArgs = new ValidacaoEventArgs(Text);
                 var ehValido = true;
                 foreach(ValidacaoEventHandler validacao in listaValidacao)
                 {
-                    if (validacao(Text) == false)
+                    validacao(this, eventArgs);
+                    if (!eventArgs.EhValido)
                     {
                         ehValido = false;
                         break;

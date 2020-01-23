@@ -55,14 +55,15 @@ namespace ByteBank.Agencias
             textDescricao.Validacao += ValidarCampoNulo;
             textEndereco.Validacao += ValidarCampoNulo;
         }
-        private bool ValidarSomenteDigito(string texto)
+        private void ValidarSomenteDigito(object sender, ValidacaoEventArgs e)
         {
-            return texto.All(char.IsDigit);
+             var EhValido = e.Texto.All(char.IsDigit);
+            e.EhValido = EhValido;
         }
-        private bool ValidarCampoNulo(string texto)
+        private void ValidarCampoNulo(object sender, ValidacaoEventArgs e)
         {
-            return !string.IsNullOrEmpty(texto);
-
+            var EhValido = !string.IsNullOrEmpty(e.Texto);
+            e.EhValido = EhValido;
         }
         private void Fechar(object sender, EventArgs e) =>
             Close();
